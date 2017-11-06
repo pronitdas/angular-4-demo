@@ -6,3 +6,23 @@ td{
     white-space: nowrap;
     overflow: hidden;
 }
+
+table{
+  height:500px;
+  display:block;
+  overflow:scroll;
+  width:950px;
+}
+
+.inputRow{
+  width:950px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.mx-auto{
+  text-align: center;
+}
+.f-right{
+  float: right;
+}

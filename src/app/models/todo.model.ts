@@ -1,16 +1,14 @@
 class ToDo {
-    _id:string;
+    id:number;
+    userId:number;
     title: string;
-    description: string;
-    date: Date;
-    status: string;
+    completed: boolean;
 
     constructor(
     ){
+        this.userId = 0
         this.title = ""
-        this.description = ""
-        this.date = new Date()
-        this.status = ""
+        this.completed = false
     }
 }
 
