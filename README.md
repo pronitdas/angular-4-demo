@@ -6,7 +6,7 @@ First download this project to your computer.
 ## Download Instruction
 
 
-Run `git clone https://github.com/nomanHasan/todoapp-angular`
+Run `git clone https://github.com/pronitdas/angular-4-demo`
 
 
 
