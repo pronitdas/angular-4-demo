@@ -34,7 +34,7 @@
 
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-body">
           <tr class="todo" (dblclick)="editTodo(todo)" *ngFor="let todo of todosList">
 
             <ng-container *ngIf="!editTodos.includes(todo); else editTD">

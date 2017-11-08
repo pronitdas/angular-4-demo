@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class TodoService {
 
-  api_url = 'https://jsonplaceholder.typicode.com';
-  todoUrl = `${this.api_url}/todos`;
+  api_url = 'http://localhost:3000/api/v1';
+  todoUrl = `${this.api_url}/todo`;
 
   constructor(
     private http: HttpClient
@@ -31,11 +31,11 @@ export class TodoService {
   }
 
   editTodo(todo:ToDo){
-    let editUrl = `${this.todoUrl}/${todo.id}`
-    return this.http.put(editUrl, todo);
+    let editUrl = `${this.todoUrl}/${todo._id}`
+    return this.http.patch(editUrl, todo);
   }
 
-  deleteTodo(id:number):any{
+  deleteTodo(id:string):any{
     let deleteUrl = `${this.todoUrl}/${id}`
     return this.http.delete(deleteUrl)
     .map(res  => {

@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
   create() {
     this.todoService.createTodo(this.newTodo)
       .subscribe((res) => {
-        console.log(res);
         this.todosList.push(res)
         this.newTodo = new ToDo()
       })
@@ -67,24 +66,26 @@ export class AppComponent implements OnInit {
       /* save data */
       let tempList = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
       let objProps = [];
-      this.todosList = _.map(tempList ,(d,index)=>{
+     _.each(tempList ,(d,index)=>{
         if(index===0){
           objProps = d;
         } else {
-          let a = {};
+          this.newTodo = new ToDo();
           _.each(objProps , (b,index) => {
             if(d[index] === "TRUE" || d[index] === "FALSE"){
-              a[b]= d[index] === "TRUE";
+              this.newTodo[b]= d[index] === "TRUE";
             } else {
-              a[b]= d[index];
+              this.newTodo[b]= d[index];
             }
           });
-          return a;
+          this.create();
         }
       });
       this.todosList.splice(0,1);
     };
-
+    _.each(this.todosList , (todo)=> {
+      this.todoService.createTodo(todo);
+    });
     reader.readAsBinaryString(target.files[0]);
   }
 
@@ -138,7 +139,7 @@ export class AppComponent implements OnInit {
   }
 
   deleteTodo(todo: ToDo) {
-    this.todoService.deleteTodo(todo.id).subscribe(res => {
+    this.todoService.deleteTodo(todo._id).subscribe(res => {
       this.todosList.splice(this.todosList.indexOf(todo), 1);
     })
   }

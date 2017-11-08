@@ -1,5 +1,5 @@
 class ToDo {
-    id:number;
+    _id:string;
     userId:number;
     title: string;
     completed: boolean;
